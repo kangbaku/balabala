@@ -9,8 +9,10 @@ input.onButtonPressed(Button.AB, function () {
     }
     if (bala.isTouching(target)) {
         game.addScore(1)
+        music.playSoundEffect(music.builtinSoundEffect(soundExpression.spring), SoundExpressionPlayMode.InBackground)
     } else {
         game.removeLife(1)
+        music.playSoundEffect(music.builtinSoundEffect(soundExpression.sad), SoundExpressionPlayMode.InBackground)
     }
     bala.delete()
     target.delete()
@@ -29,7 +31,9 @@ basic.showNumber(0)
 base = game.createSprite(randint(0, 4), 4)
 target = game.createSprite(randint(0, 4), 0)
 basic.forever(function () {
-	
+    if (game.isGameOver()) {
+        music.playSoundEffect(music.builtinSoundEffect(soundExpression.mysterious), SoundExpressionPlayMode.UntilDone)
+    }
 })
 basic.forever(function () {
 	
